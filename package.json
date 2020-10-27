@@ -1,0 +1,14 @@
+{
+  "name": "nodejs_k8s",
+  "version": "1.0.0",
+  "description": "Node.js on k8s",
+  "author": "Mehdi Yedes",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1",
+    "mysql": "2.18.1"
+  }
+}
