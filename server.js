@@ -19,13 +19,36 @@ const PORT = 8080;
 const HOST = '0.0.0.0';
 
 const app = express();
+
+// Health endpoint
+app.use('/healthcheck', require('express-healthcheck')());
+
+// Endpoint for checking the readiness of the app
+// Makes sure that we can establish a connection to the database
+app.get('/status', (req, res) => {
+    connection.query('SELECT 1 from greeting', function (error, results, fields) {
+        if (error) {
+            console.error(error.code);
+            res.status(500).send({ fatal: "Looks like we have an issue :( Please try again later." })
+        }
+        else{
+            res.send('OK!');
+        }
+    });
+});
+
 app.get('/', (req, res) => {
     var msg;
     connection.query('SELECT message from greeting LIMIT 1', function (error, results, fields) {
-        if (error) throw error;
-        msg = results[0].message;
-        console.log(msg);
-        res.send(msg);
+        if (error) {
+            console.error(error.code);
+            res.status(500).send({ fatal: "Looks like we have an issue :( Please try again later." })
+        }
+        else{
+            msg = results[0].message;
+            console.log(msg);
+            res.send(msg);
+        }
     });
 });
 
