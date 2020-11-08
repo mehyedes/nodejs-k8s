@@ -1,0 +1,19 @@
+#!/usr/bin/env groovy
+
+pipelineJob('deploy-nodejs-k8s') {
+    displayName('Build & Deploy NodeJS hello App')
+
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        url('https://github.com/mehyedes/nodejs-k8s.git')
+                    }
+                    branches('*/main')
+                }
+            }
+            scriptPath('cicd/pipelines/hello-node.jenkins')
+        }
+    }
+}
