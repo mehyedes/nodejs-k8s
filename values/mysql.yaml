@@ -1,0 +1,11 @@
+mysqlDatabase: nodejs
+## Create a database user
+##
+mysqlUser: 'node'
+## Default: random 10 character string
+mysqlPassword: dummy
+initializationFiles:
+  first-db.sql: |-
+    USE nodejs;
+    CREATE TABLE greeting(message varchar(64));
+    INSERT INTO greeting VALUES('Hello World!');
