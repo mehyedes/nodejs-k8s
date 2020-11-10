@@ -11,10 +11,10 @@ image:
   tag: ""
 
 environment:
-  db_user: "node"
+  db_user: "root"
   db_host: "mysql"
   db_name: "nodejs"
-  db_password: "securePassword"
+  db_password: "dummy"
 
 imagePullSecrets: []
 nameOverride: ""

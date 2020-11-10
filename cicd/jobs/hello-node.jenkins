@@ -13,7 +13,7 @@ pipelineJob('deploy-nodejs-k8s') {
                     branches('*/main')
                 }
             }
-            scriptPath('cicd/pipelines/hello-node.jenkins')
+            scriptPath('cicd/pipelines/Jenkinsfile')
         }
     }
 }
