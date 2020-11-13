@@ -35,6 +35,7 @@ spec:
 """
         }
     }
+
     stages {
         stage('Build Docker Image') {
             steps {
@@ -51,7 +52,8 @@ spec:
                         --set image.tag=${VERSION} \
                         nodejs-k8s ./chart/nodejs-k8s/ \
                         -f values/prod/nodejs-k8s.yaml \
-                        -n prod"
+                        -n prod
+                    """
                 }
             }
         }
