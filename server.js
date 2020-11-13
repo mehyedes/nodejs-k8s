@@ -7,6 +7,7 @@ const dbHost     = process.env['DB_HOST'] || 'localhost';
 const dbUser     = process.env['DB_USER'] || 'root';
 const dbPassword = process.env['DB_PASSWORD'] || 'dummy';
 const dbName     = process.env['DB_NAME'] || 'nodejs';
+const namespace  = process.env['NAMESPACE'] || 'kubernetes';
 
 var connection = mysql.createConnection({
   host     : dbHost,
@@ -44,8 +45,8 @@ app.get('/', (req, res) => {
             console.error(error.code);
             res.status(500).send({ fatal: "Looks like we have an issue :( Please try again later." })
         }
-        else{
-            msg = results[0].message;
+        else {
+            msg = results[0].message + `</br> From the <b>${namespace}</b> namespace `;
             console.log(msg);
             res.send(msg);
         }

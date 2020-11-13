@@ -8,3 +8,4 @@ data:
   DB_HOST: '{{ .Values.environment.db_host }}'
   DB_USER: '{{ .Values.environment.db_user }}'
   DB_NAME: '{{ .Values.environment.db_name }}'
+  NAMESPACE : '{{ .Release.Namespace }}'
