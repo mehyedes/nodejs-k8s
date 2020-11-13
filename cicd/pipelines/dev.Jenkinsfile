@@ -39,7 +39,7 @@ spec:
         stage('Build Docker Image') {
             steps {
                 container('docker') {
-                    sh "docker build -t nodejs-k8s:${VERSION} ."
+                    sh "docker build -t nodejs-k8s:${params.VERSION} ."
                 }
             }
         }
@@ -48,7 +48,7 @@ spec:
                 container('helm') {
                     sh """
                         helm upgrade --install \
-                        --set image.tag=${VERSION} \
+                        --set image.tag=${params.VERSION} \
                         nodejs-k8s \
                         ./chart/nodejs-k8s/ \
                         -f values/dev/nodejs-k8s.yaml \
